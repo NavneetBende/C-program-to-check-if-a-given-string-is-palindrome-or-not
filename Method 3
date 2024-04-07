@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <string.h>
+
+
+void Lower_case(char str[]) {
+    int i = 0;
+    while (str[i] != '\0') {
+        if (str[i] > 64 && str[i] < 91) 
+            str[i] += 32; 
+
+        i++; 
+    } 
+} 
+
+void CheckPalindrome(char str[]) 
+{ 
+
+    // to mark left most and right most indexes of string 
+    int left = 0; 
+    int right = strlen(str) - 1; 
+
+    // Keep comparing characters while they are same 
+    // until left and right overlap one another 
+    // inspiration for this approach taken from binary search 
+    while (right > left) 
+    {
+        if (str[left++] != str[right--]) {
+            printf("The String %s is not a palindrome", str);
+            return;
+        }
+    }
+    printf("The String %s is palindrome", str);
+}
+int main() 
+{
+    char str1[50] = "Radar";
+    
+    Lower_case(str1);
+    CheckPalindrome(str1);
+    
+    return 0;
+}
